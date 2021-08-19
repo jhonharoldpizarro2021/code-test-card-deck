@@ -258,6 +258,9 @@ class CardDeckUrlParameters extends CardDeck{
 					this.newDeck.push(card);
 				}
 			});
+			if(this.limit > this.newDeck.length){
+				this.limit = this.newDeck.length;
+			}
 			this.newDeck.length = this.limit;
 		} else if(this.cardsArray.length == 0 && this.suitsArray.length > 0 && this.ranksArray.length == 0 && this.limit != null){
 			//this.newDeck.push(card);
@@ -271,6 +274,9 @@ class CardDeckUrlParameters extends CardDeck{
 					this.newDeck.push(card);
 				}
 			});
+			if(this.limit > this.newDeck.length){
+				this.limit = this.newDeck.length;
+			}
 			this.newDeck.length = this.limit;
 		} else if(this.cardsArray.length == 0 && this.suitsArray.length == 0 && this.ranksArray.length > 0 && this.limit != null){
 			//this.newDeck.push(card);
@@ -284,6 +290,9 @@ class CardDeckUrlParameters extends CardDeck{
 					this.newDeck.push(card);
 				}
 			});
+			if(this.limit > this.newDeck.length){
+				this.limit = this.newDeck.length;
+			}
 			this.newDeck.length = this.limit;
 		} else if(this.cardsArray.length == 0 && this.suitsArray.length == 0 && this.ranksArray.length == 0 && this.limit != null){
 			//this.newDeck.push(card);
@@ -297,6 +306,9 @@ class CardDeckUrlParameters extends CardDeck{
 					this.newDeck.push(card);
 				}
 			});
+			if(this.limit > this.newDeck.length){
+				this.limit = this.newDeck.length;
+			}
 			this.newDeck.length = this.limit;
 		} else{
 			console.log('nada');
