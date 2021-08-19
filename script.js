@@ -174,8 +174,6 @@ class CardDeck {
 //
 //  Your code goes below this comment.
 /*------------------------------------------*/
-
-
 class CardDeckUrlParameters extends CardDeck{
 
 	constructor(deckElement, handElement){
@@ -193,27 +191,126 @@ class CardDeckUrlParameters extends CardDeck{
 		this.ranksArray = (this.ranks!=null)?this.ranks.split(' '):[];
 
 		this.newDeck = [];
+		console.log('---*****-');
+		console.log(this.cardsArray.length);
+		console.log(this.suitsArray.length);
+		console.log(this.ranksArray.length);
+		console.log(this.limit);
+		console.log('--*****--');
 
-		this.deck.forEach((card) => {
-			const cardsFound = this.cardsArray.find((element) => element == card.id);
-			const suitsFound = this.suitsArray.find((element) => element == card.suit);
-			const ranksFound = this.ranksArray.find((element) => element == card.rank);
-
-
-			if(cardsFound != undefined || suitsFound != undefined || ranksFound != undefined){
+		if(this.cardsArray.length > 0 && this.suitsArray.length == 0 && this.ranksArray.length == 0 && this.limit == null){
+			//this.newDeck.push(card);
+			console.log('only cards');
+			console.log('----');
+			this.deck.forEach((card) => {
+				const cardsFound = this.cardsArray.find((element) => element == card.id);
+				const suitsFound = this.suitsArray.find((element) => element == card.suit);
+				const ranksFound = this.ranksArray.find((element) => element == card.rank);
+				if(cardsFound != undefined && suitsFound == undefined && ranksFound == undefined){
+					this.newDeck.push(card);
+				}
+			});
+		} else if(this.cardsArray.length == 0 && this.suitsArray.length > 0 && this.ranksArray.length == 0 && this.limit == null){
+			//this.newDeck.push(card);
+			console.log('only suits');
+			console.log('----');
+			this.deck.forEach((card) => {
+				const cardsFound = this.cardsArray.find((element) => element == card.id);
+				const suitsFound = this.suitsArray.find((element) => element == card.suit);
+				const ranksFound = this.ranksArray.find((element) => element == card.rank);
+				if(cardsFound == undefined && suitsFound != undefined && ranksFound == undefined){
+					this.newDeck.push(card);
+				}
+			});
+		} else if(this.cardsArray.length == 0 && this.suitsArray.length == 0 && this.ranksArray.length > 0 && this.limit == null){
+			//this.newDeck.push(card);
+			console.log('only ranks');
+			console.log('----');
+			this.deck.forEach((card) => {
+				const cardsFound = this.cardsArray.find((element) => element == card.id);
+				const suitsFound = this.suitsArray.find((element) => element == card.suit);
+				const ranksFound = this.ranksArray.find((element) => element == card.rank);
+				if(cardsFound == undefined && suitsFound == undefined && ranksFound != undefined){
+					this.newDeck.push(card);
+				}
+			});
+		} else if(this.cardsArray.length == 0 && this.suitsArray.length > 0 && this.ranksArray.length > 0 && this.limit == null){
+			//this.newDeck.push(card);
+			console.log('suits ranks');
+			console.log('----');
+			this.deck.forEach((card) => {
+				const cardsFound = this.cardsArray.find((element) => element == card.id);
+				const suitsFound = this.suitsArray.find((element) => element == card.suit);
+				const ranksFound = this.ranksArray.find((element) => element == card.rank);
+				if(cardsFound == undefined && suitsFound != undefined && ranksFound != undefined){
+					this.newDeck.push(card);
+				}
+			});
+		} else if(this.cardsArray.length == 0 && this.suitsArray.length > 0 && this.ranksArray.length > 0 && this.limit != null){
+			//this.newDeck.push(card);
+			console.log('suits ranks limit');
+			console.log('----');
+			this.deck.forEach((card) => {
+				const cardsFound = this.cardsArray.find((element) => element == card.id);
+				const suitsFound = this.suitsArray.find((element) => element == card.suit);
+				const ranksFound = this.ranksArray.find((element) => element == card.rank);
+				if(cardsFound == undefined && suitsFound != undefined && ranksFound != undefined){
+					this.newDeck.push(card);
+				}
+			});
+			this.newDeck.length = this.limit;
+		} else if(this.cardsArray.length == 0 && this.suitsArray.length > 0 && this.ranksArray.length == 0 && this.limit != null){
+			//this.newDeck.push(card);
+			console.log('suits limit');
+			console.log('----');
+			this.deck.forEach((card) => {
+				const cardsFound = this.cardsArray.find((element) => element == card.id);
+				const suitsFound = this.suitsArray.find((element) => element == card.suit);
+				const ranksFound = this.ranksArray.find((element) => element == card.rank);
+				if(cardsFound == undefined && suitsFound != undefined && ranksFound == undefined){
+					this.newDeck.push(card);
+				}
+			});
+			this.newDeck.length = this.limit;
+		} else if(this.cardsArray.length == 0 && this.suitsArray.length == 0 && this.ranksArray.length > 0 && this.limit != null){
+			//this.newDeck.push(card);
+			console.log('ranks limit');
+			console.log('----');
+			this.deck.forEach((card) => {
+				const cardsFound = this.cardsArray.find((element) => element == card.id);
+				const suitsFound = this.suitsArray.find((element) => element == card.suit);
+				const ranksFound = this.ranksArray.find((element) => element == card.rank);
+				if(cardsFound == undefined && suitsFound == undefined && ranksFound != undefined){
+					this.newDeck.push(card);
+				}
+			});
+			this.newDeck.length = this.limit;
+		} else if(this.cardsArray.length == 0 && this.suitsArray.length == 0 && this.ranksArray.length == 0 && this.limit != null){
+			//this.newDeck.push(card);
+			console.log('ranks limit');
+			console.log('----');
+			this.deck.forEach((card) => {
+				const cardsFound = this.cardsArray.find((element) => element == card.id);
+				const suitsFound = this.suitsArray.find((element) => element == card.suit);
+				const ranksFound = this.ranksArray.find((element) => element == card.rank);
+				if(cardsFound == undefined && suitsFound == undefined && ranksFound == undefined){
+					this.newDeck.push(card);
+				}
+			});
+			this.newDeck.length = this.limit;
+		} else{
+			console.log('nada');
+			//this.newDeck.push(card);
+			this.deck.forEach((card) => {
 				this.newDeck.push(card);
-			}
-
-			
-		});
+			});
+		}
 
 		this.newDeck.slice(0);
 		this.newDeck.sort(function(a,b) {
 			return a.id - b.id;
 		});
-		this.newDeck.length = this.limit;
 		this.deck = this.newDeck;
-
 		super.init();
 	}
 
@@ -233,9 +330,6 @@ class CardDeckUrlParameters extends CardDeck{
 	}
 
 }
-
-
-
 
 // Create a new card deck.
 const deck = new CardDeckUrlParameters(".deck", ".hand");
