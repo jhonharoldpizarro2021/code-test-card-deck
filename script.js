@@ -118,6 +118,7 @@ class CardDeck {
 		let Y = this.generateRandomNumber(-10, 10) + "px";
 		cardElement.style.transform = `rotate(${rotation}) translate3D(${X}, ${Y}, 0px)`;
 	}
+
 	draw(id) {
 		let card = this.deck.find((x) => x.id === id);
 		let cardElement = document.getElementById(id);
@@ -174,8 +175,70 @@ class CardDeck {
 //  Your code goes below this comment.
 /*------------------------------------------*/
 
+
+class CardDeckUrlParameters extends CardDeck{
+
+	constructor(deckElement, handElement){
+        super(deckElement, handElement);
+    }
+
+	init() {
+		this.cards = this.getParameterByName('cards');
+		this.suits = this.getParameterByName('suits');
+		this.ranks = this.getParameterByName('ranks');
+		this.limit = this.getParameterByName('limit');
+
+		this.cardsArray = (this.cards!=null)?this.cards.split(' '):[];
+		this.suitsArray = (this.suits!=null)?this.suits.split(' '):[];
+		this.ranksArray = (this.ranks!=null)?this.ranks.split(' '):[];
+
+		this.newDeck = [];
+
+		this.deck.forEach((card) => {
+			const cardsFound = this.cardsArray.find((element) => element == card.id);
+			const suitsFound = this.suitsArray.find((element) => element == card.suit);
+			const ranksFound = this.ranksArray.find((element) => element == card.rank);
+
+
+			if(cardsFound != undefined || suitsFound != undefined || ranksFound != undefined){
+				this.newDeck.push(card);
+			}
+
+			
+		});
+
+		this.newDeck.slice(0);
+		this.newDeck.sort(function(a,b) {
+			return a.id - b.id;
+		});
+		this.newDeck.length = this.limit;
+		this.deck = this.newDeck;
+
+		super.init();
+	}
+
+	/**
+	 * Get params from url
+	 * @param {*} name 
+	 * @param {*} url 
+	 * @returns 
+	 */
+	getParameterByName(name, url = window.location.href) {
+		name = name.replace(/[\[\]]/g, '\\$&');
+		var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+			results = regex.exec(url);
+		if (!results) return null;
+		if (!results[2]) return '';
+		return decodeURIComponent(results[2].replace(/\+/g, ' '));
+	}
+
+}
+
+
+
+
 // Create a new card deck.
-const deck = new CardDeck(".deck", ".hand");
+const deck = new CardDeckUrlParameters(".deck", ".hand");
 
 // Take a look at the deck object and its methods.
 console.log(deck);
